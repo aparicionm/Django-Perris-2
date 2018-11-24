@@ -25,8 +25,12 @@
                 <br>
                 <br>
                 <button>Ingresar</button>
+                <br>
+                <a href="{% url 'social:begin' 'google-oauth2' %}">
+                    <button type="button" name="button" class="btn btn-primary">Google+</button>
+                </a>
                 <hr>
-                <a href="{% url 'accounts:password_reset' %}">Olvidé mi contraseña</a>
+                <a href="{% url 'accounts:password_reset' %}">Olvidé mi contraseña</a><br>
                 <p>¿No posee cuenta?
                     <br>
                     <a href="{% url 'accounts:signup' %}">Registrate aquí</a>

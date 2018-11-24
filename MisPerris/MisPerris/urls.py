@@ -26,6 +26,8 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^', include('api.urls')),
     url(r'^$', views.homepage),
+    url(r'^', include('django.contrib.auth.urls')),
+    url('^oauth/',include('social_django.urls',namespace="social")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
