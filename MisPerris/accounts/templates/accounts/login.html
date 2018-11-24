@@ -1,0 +1,42 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/flexboxgrid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <title>Mis perris - Inicio sesión</title>
+</head>
+
+<body>
+    <div class="container-fluid ris">
+        <div class="row">
+            <div class="col-xs-12"> 
+            {% block content %}
+
+            <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+                <h2>Cuenta Mis Perris</h2> <hr>
+                {% csrf_token %} {{ form }} {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}" /> {% endif %}
+                <br>
+                <br>
+                <button>Ingresar</button>
+                <hr>
+                <a href="{% url 'accounts:password_reset' %}">Olvidé mi contraseña</a>
+                <p>¿No posee cuenta?
+                    <br>
+                    <a href="{% url 'accounts:signup' %}">Registrate aquí</a>
+                </p>
+            </form>
+
+            {% endblock %}
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>

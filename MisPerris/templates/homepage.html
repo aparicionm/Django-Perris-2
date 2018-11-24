@@ -1,0 +1,235 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="static/fonts/font-awesome.css">
+    <link rel="stylesheet" href="static/fonts/icon.css">
+    <link rel="stylesheet" href="static/css/flexboxgrid.min.css">
+    <link rel="stylesheet" href="static/css/lightbox.min.css">
+    <link rel="stylesheet" href="static/css/formulario.css">
+    <link rel="stylesheet" href="static/css/slider.css">
+    <link rel="stylesheet" href="static/css/error.css">
+    <link rel="stylesheet" href="static/css/estilo.css">
+    <link rel="stylesheet" href="static/css/homepage.css">
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/lightbox-plus-jquery.min.js"></script>
+    <script src="static/js/regiones-comunas.js"></script>
+    <script src="static/js/slider.js"></script>
+    <title>Mis Perris</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col-xs-12 col-ms-6 col-md-4 col-lg-4">
+                <img src="static/img/logo.png" alt="logo" id="logo">
+            </div>
+
+            <nav class="col-xs-12 col-ms-1 col-md-8 col-lg-8">
+                <ul class="row center-xs center-md">
+                    <li>
+                        <a href="http://127.0.0.1:8000/">inicio</a>
+                    </li>
+                    <li>
+                        <a href="#contacto">quienes somos</a>
+                    </li>
+                    <li>
+                        <a href="#">servicios</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="#form">contáctanos</a>
+                    </li>
+                    <li>
+                        <a href="blog/">rescatados</a>
+                    </li>
+                    <li>
+                        <div class="user">Bienvenido {{request.user}}</div>
+                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Salir</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'accounts:login' %}">cuenta</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <div class="row">
+            <div class="slideshow center-xs">
+                <ul class="slider">
+                    <li>
+                        <img src="static/img/adoptados/Tom.jpg" alt="Tom">
+                    </li>
+                    <li>
+                        <img src="static/img/adoptados/Apolo.jpg" alt="Apolo">
+                    </li>
+                    <li>
+                        <img src="static/img/adoptados/Duque.jpg" alt="Duque">
+                    </li>
+
+                </ul>
+
+                <ol class="pagination">
+                </ol>
+
+                <div class="left">
+                    <span class="fa fa-chevron-circle-left"></span>
+                </div>
+
+                <div class="right">
+                    <span class="fa fa-chevron-circle-right"></span>
+                </div>
+
+            </div>
+        </div>
+        <div class="row pag">
+            <div class="col-xs-12 col-md-6 col-md-4 col-lg-4 ">
+                <ul class="row center-xs left-md callejero">
+                    <li>
+                        <a>+ 56 9 98765431</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-6 col-md-4 col-lg-4 ">
+                <ul class="row center-xs center-md callejero">
+                    <li>
+                        <a>Rescate y adopcion de perros callejeros</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-6 col-md-4 col-lg-4">
+                <ul class="row center-xs rigth-md" id="redes">
+                    <li class="borde">
+                        <a href="https://facebook.com" target="_blank" class="icon-facebook"></a>
+                    </li>
+                    <li class="borde">
+                        <a href="https://google.com" target="_blank" class="icon-google"></a>
+                    </li>
+                    <li class="borde">
+                        <a href="https://instagram.com" target="_blank" class="fa fa-instagram"></a>
+                    </li>
+                    <li class="borde">
+                        <a href="https://gmail.com" target="_blank" class="fa fa-envelope"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <a id="contacto"></a>
+            <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6 res">
+                <h1>RESCATE</h1>
+                <h6>ETAPA UNO</h6>
+                <h2>___</h2>
+                <br>
+                <p>Rescatamos perros en situación de peligro y/o abandono. Los rehabilitamos y los preparamos para buscarles
+                    un hogar.</p>
+                <br>
+                <img src="static/img/rescate.jpg" alt="rescate" width="250" height="125">
+            </article>
+
+            <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6 crow">
+                <img src="static/img/crowfunding.jpg" alt="crowfunding" width="250" height="200">
+                <h1>CROWFUNDING</h1>
+                <h6>FINANCIAMIENTO</h6>
+                <h2>___</h2>
+                <br>
+                <p>Sigue nuestras redes sociales para informarte acerca de las diversas campañas y actividades que realizamos
+                    para obtener financiamiento para seguir ayundando.</p>
+                <br>
+                <button id="campañas">CAMPAÑAS</button>
+                <br>
+            </article>
+        </div>
+
+        <div class="galery row">
+            <div class="col-xs-4">
+                <a href="static/img/rescatados/Oso.jpg" data-lightbox="mygallery" data-title="Oso, es muy curioso">
+                    <img src="static/img/rescatados/oso.jpg" alt="Oso" class="resca-img">
+                </a>
+                <a href="static/img/rescatados/Maya.jpg" data-lightbox="mygallery" data-title="Maya, es muy timida">
+                    <img src="static/img/rescatados/Maya.jpg" alt="Maya" class="resca-img">
+                </a>
+                <a href="static/img/rescatados/Wifi.jpg" data-lightbox="mygallery" data-title="Wifi, es travieso">
+                    <img src="static/img/rescatados/Wifi.jpg" alt="Wifi" class="resca-img">
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a href="static/img/rescatados/Chocolate.jpg" data-lightbox="mygallery" data-title="Chocolate, muy leal">
+                    <img src="static/img/rescatados/Chocolate.jpg" alt="Chocolate" class="resca-img">
+                </a>
+                <a href="static/img/rescatados/Pexel.jpg" data-lightbox="mygallery" data-title="Pexel, muy obediente">
+                    <img src="static/img/rescatados/Pexel.jpg" alt="Pexel" class="resca-img">
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a href="static/img/rescatados/Bigotes.jpg" data-lightbox="mygallery" data-title="Bigotes, le gusta jugar todo el tiempo">
+                    <img src="static/img/rescatados/Bigotes.jpg" alt="Bigotes" class="resca-img">
+                </a>
+                <a href="static/img/rescatados/Luna.jpg" data-lightbox="mygallery" data-title="Luna, es muy tranquila">
+                    <img src="static/img/rescatados/Luna.jpg" alt="Luna" class="resca-img">
+                </a>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="row">
+            <a id="form"></a>
+            <form class="formulario">
+                <label class="formulario__label">Correo electrónico</label>
+                <input type="text" class="formulario__input" name="correo" placeholder="Ej:misperris@hotmail.com" minlength="18" maxlength="30"
+                    required>
+                <br>
+                <label class="formulario__label">Run</label>
+                <input type="text" class="formulario__input" name="run" placeholder="Ej:208873391" minlength="9" required>
+                <br>
+                <label class="formulario__label">Nombres</label>
+                <input type="text" class="formulario__input" placeholder="Ingrese Nombres" required>
+                <br>
+                <label class="formulario__label">Apellidos</label>
+                <input type="text" class="formulario__input" placeholder="Ingrese Apellidos" required>
+                <br>
+                <label class="formulario__label">Fecha nacimiento</label>
+                <input type="date" class="formulario__input" name="fecha" min="1900-01-01" max="2000-12-31" required>
+                <br>
+                <label class="formulario__label">Teléfono de contacto</label>
+                <input type="number" class="formulario__input" name="telefono" placeholder="Ingrese numero" required>
+                <br>
+                <label class="formulario__label">Región</label>
+                <select id="regiones"></select>
+                <br>
+                <label class="formulario__label">Ciudad</label>
+                <select id="comunas"></select>
+                <br>
+                <label class="formulario__label">Tipo de vivienda</label>
+                <select name="vivienda" required>
+                    <option value="">Seleccione vivienda</option>
+                    <option value="1">Casa con patio grande</option>
+                    <option value="2">Casa con patio pequeño</option>
+                    <option value="3">Casa sin patio</option>
+                    <option value="4">Departamento</option>
+                </select>
+                <br>
+
+                <br>
+                <button type="submit">Enviar</button>
+
+
+            </form>
+        </div>
+        {% endif %}
+        <footer class="row">
+            <div class="col-xs-12">
+                <p>Desarrollo Web y Mobile</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %} {% block content %}
+<div class="date">
+    <h1>{{ post.nombre }}</h1>
+    <p>{{ post.raza|linebreaksbr }}</p>
+    <p>{{ post.descripcion }}</p>
+    <p>{{ post.estado }}</p>
+</div>
+<img src="{{ post.foto.url }}" alt="">
+{% if user.is_superuser %}
+<div class="fecha">
+    <a class="btn btn-default" href="{% url 'res_edit' pk=post.pk %}">
+        <span class="glyphicon glyphicon-pencil"></span>
+    </a>
+    <a href="{% url 'res_delete' pk=post.pk %}">
+        <span class="btn btn-danger">Borrar</span>
+    </a> 
+    {% endif %}
+    {% if post.published_date %} {{ post.published_date }} {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+header nav ul li a{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+header nav ul li form{
+    margin: auto;
+    width: 0;
+    max-width: 0;
+    padding: 0;
+    box-shadow: 0;
+    position: 0;
+    text-align: 0;
+    background-color:0;
+    padding-top:0;
+}
+header nav ul li form button{
+    background: 0;
+    color : 0;
+    padding: 0;
+    cursor: 0;
+    border: 0;
+    width: 0%;
+    
+}
+
+header nav ul li form button:hover{
+    transform: 0;
+    transition: 0;
+}
+
+
+.user{
+    margin-left:10px;
+    padding-top:10px;
+    color:white;
+}

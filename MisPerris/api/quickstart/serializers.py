@@ -1,0 +1,21 @@
+from django.contrib.auth.models import User, Group
+from rest_framework import serializers
+from blog.models import Rescatado
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name="rescatado:user-detail")
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'groups')
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = ('url', 'name')
+
+class RescatadoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Rescatado
+        fields = ('foto', 'nombre', 'raza', 'descripcion', 'estado', 'published_date')
+

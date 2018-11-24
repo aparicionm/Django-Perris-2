@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h1>Borrar rescatado</h1>
+<form method="POST" class="post-form">{% csrf_token %}
+    <h3>
+        ¿Esta seguro que desea borrar?
+       
+    </h3>
+    <a class="btn btn-default" href="http://127.0.0.1:8000/blog/">Cancelar</a>
+    <button type='submit' class="btn btn-danger">Si</button>
+    
+</form>
+
+{% endblock %}

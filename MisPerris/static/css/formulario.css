@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+form{
+    margin: auto;
+    width: 500px;
+    max-width: 100%;
+    padding: 0 15px;
+    box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+    background-color:  #85d4b7;
+    padding-top:1px;
+}
+
+
+div form label{
+    display: block;
+    margin: .5em 0 0 0;   
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+div form h2{
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+
+div form input{
+    margin: 2px;
+    padding: 2%;
+   
+}
+div form button{
+    background: #3bd6a0;
+    color : #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    width: 50%;
+    
+}
+
+div form button:hover{
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+
